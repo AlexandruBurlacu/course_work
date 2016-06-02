@@ -1,2 +1,2 @@
-# course_work
+# Course work
 My coursework
