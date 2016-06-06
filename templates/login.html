@@ -1,4 +1,9 @@
 {% extends 'index.html' %}
 {% block login %}
     <h1>This is login page</h1>
+    <form method = "POST">
+        <input type="text" name="username" value = "{{ username }}"/>
+        <input type="password" name="password" value = "{{ password }}"/>
+        <input type="submit" value="Submit"/>
+    </form>
 {% endblock %}

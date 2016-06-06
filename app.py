@@ -9,7 +9,7 @@ def home():
 @app.route("/logout")
 def logout():
     return render_template("logout.html")
-    
+
 @app.route("/login")
 def login():
     return render_template("login.html")
