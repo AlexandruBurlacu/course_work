@@ -1,6 +1,6 @@
 # Course work
-My coursework.
+Implementation and optimization of artificial neural networks.
 
-Here I used a neural network with 2 hidden layers, with 4 nodes each.
+In this project I have implemented a function that trains a ANN and then makes a prediction given some features.
 
-Because of higher complexity, the accuracy of prediction is about 99.5% after 6000 iterations.
+In this specific case I've made a dataset of 5000 bogs of 5 breeds, and using that ANN, I try to classify these.

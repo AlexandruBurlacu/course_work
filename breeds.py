@@ -92,21 +92,3 @@ breeds = (["german shepheard" for _ in range(1000)] +
           ["australian shepherd" for _ in range(1000)] +
           ["belgian shepherd" for _ in range(1000)] +
           ["caucasian shepherd" for _ in range(1000)])
-          
-
-############################################
-
-import csv
-
-schema = lambda x, y, z, k, b: [x, y, x, k, b]
-
-with open('breeds.csv', 'w') as csvfile:
-    writer = csv.writer(csvfile, delimiter = ",")
-    writer.writerow(("male weight", "female weight", "male height", "female height", "breed"))
-    for row in zip(male_weights, female_weights, male_heights, female_heights, breeds):
-        writer.writerow(row) 
-
-with open('breeds.csv') as file:
-    reader = csv.reader(file)
-    for line in reader:
-        pass
