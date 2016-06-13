@@ -13,10 +13,10 @@
         5) https://en.wikipedia.org/wiki/Caucasian_Shepherd_Dog
 """
 
-from numpy import mean, random, std
+from numpy import mean, random, std, concatenate
 
 def sigma2(rang):
-    return std(rang) ** 2
+    return std(rang)
 
 def miu(rang):
     return mean(rang)
@@ -47,37 +47,66 @@ belg_shep_female_w = (20, 25)
 belg_shep_female_h = (56, 62)
 
 # caucasian shepherd stats
-cauc_shep_male_w = (25, 30)
-cauc_shep_male_h = (60, 66)
-cauc_shep_female_w = (20, 25) 
-cauc_shep_female_h = (56, 62)
+cauc_shep_male_w = (55, 100)
+cauc_shep_male_h = (70, 90)
+cauc_shep_female_w = (45, 80) 
+cauc_shep_female_h = (65, 75)
 
 random.seed(0)
+############################################
 
-male_weights = [sigma2(german_shep_male_w) * random.randn(100) + miu(german_shep_male_w),
-                sigma2(anatol_shep_male_w) * random.randn(100) + miu(anatol_shep_male_w),
-                sigma2(austral_shep_male_w) * random.randn(100) + miu(austral_shep_male_w),
-                sigma2(belg_shep_male_w) * random.randn(100) + miu(belg_shep_male_w),
-                sigma2(cauc_shep_male_w) * random.randn(100) + miu(cauc_shep_male_w)]
-
-
-female_weights = [sigma2(german_shep_female_w) * random.randn(100) + miu(german_shep_female_w),
-                sigma2(anatol_shep_female_w) * random.randn(100) + miu(anatol_shep_female_w),
-                sigma2(austral_shep_female_w) * random.randn(100) + miu(austral_shep_female_w),
-                sigma2(belg_shep_female_w) * random.randn(100) + miu(belg_shep_female_w),
-                sigma2(cauc_shep_female_w) * random.randn(100) + miu(cauc_shep_female_w)]
+male_weights = concatenate(
+                [sigma2(german_shep_male_w) * random.randn(1000) + miu(german_shep_male_w),
+                sigma2(anatol_shep_male_w) * random.randn(1000) + miu(anatol_shep_male_w),
+                sigma2(austral_shep_male_w) * random.randn(1000) + miu(austral_shep_male_w),
+                sigma2(belg_shep_male_w) * random.randn(1000) + miu(belg_shep_male_w),
+                sigma2(cauc_shep_male_w) * random.randn(1000) + miu(cauc_shep_male_w)]    )
 
 
-male_heights = [sigma2(german_shep_male_h) * random.randn(100) + miu(german_shep_male_h),
-                sigma2(anatol_shep_male_h) * random.randn(100) + miu(anatol_shep_male_h),
-                sigma2(austral_shep_male_h) * random.randn(100) + miu(austral_shep_male_h),
-                sigma2(belg_shep_male_h) * random.randn(100) + miu(belg_shep_male_h),
-                sigma2(cauc_shep_male_h) * random.randn(100) + miu(cauc_shep_male_h)]
+female_weights = concatenate(
+                [sigma2(german_shep_female_w) * random.randn(1000) + miu(german_shep_female_w),
+                sigma2(anatol_shep_female_w) * random.randn(1000) + miu(anatol_shep_female_w),
+                sigma2(austral_shep_female_w) * random.randn(1000) + miu(austral_shep_female_w),
+                sigma2(belg_shep_female_w) * random.randn(1000) + miu(belg_shep_female_w),
+                sigma2(cauc_shep_female_w) * random.randn(1000) + miu(cauc_shep_female_w) ]   )
 
 
-female_heights = [sigma2(german_shep_female_h) * random.randn(100) + miu(german_shep_female_h),
-                sigma2(anatol_shep_female_h) * random.randn(100) + miu(anatol_shep_female_h),
-                sigma2(austral_shep_female_h) * random.randn(100) + miu(austral_shep_female_h),
-                sigma2(belg_shep_female_h) * random.randn(100) + miu(belg_shep_female_h),
-                sigma2(cauc_shep_female_h) * random.randn(100) + miu(cauc_shep_female_h)]
+male_heights = concatenate(
+                [sigma2(german_shep_male_h) * random.randn(1000) + miu(german_shep_male_h),
+                sigma2(anatol_shep_male_h) * random.randn(1000) + miu(anatol_shep_male_h),
+                sigma2(austral_shep_male_h) * random.randn(1000) + miu(austral_shep_male_h),
+                sigma2(belg_shep_male_h) * random.randn(1000) + miu(belg_shep_male_h),
+                sigma2(cauc_shep_male_h) * random.randn(1000) + miu(cauc_shep_male_h)  ]  )
 
+
+female_heights = concatenate(
+                [sigma2(german_shep_female_h) * random.randn(1000) + miu(german_shep_female_h),
+                sigma2(anatol_shep_female_h) * random.randn(1000) + miu(anatol_shep_female_h),
+                sigma2(austral_shep_female_h) * random.randn(1000) + miu(austral_shep_female_h),
+                sigma2(belg_shep_female_h) * random.randn(1000) + miu(belg_shep_female_h),
+                sigma2(cauc_shep_female_h) * random.randn(1000) + miu(cauc_shep_female_h)]    )
+
+
+breeds = (["german shepheard" for _ in range(1000)] + 
+          ["anatolian shepherd" for _ in range(1000)] +
+          ["australian shepherd" for _ in range(1000)] +
+          ["belgian shepherd" for _ in range(1000)] +
+          ["caucasian shepherd" for _ in range(1000)])
+          
+
+############################################
+
+import csv
+
+schema = lambda x, y, z, k, b: [x, y, x, k, b]
+
+with open('breeds.csv', 'w') as csvfile:
+    writer = csv.writer(csvfile, delimiter = ",")
+    writer.writerow(("male weight", "female weight", "male height", "female height", "breed"))
+    for row in zip(male_weights, female_weights, male_heights, female_heights, breeds):
+        writer.writerow(row) 
+
+with open('breeds.csv') as file:
+    reader = csv.reader(file)
+    for line in reader:
+        pass
