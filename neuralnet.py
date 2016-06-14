@@ -1,4 +1,4 @@
-# TODO adaptive alpha
+# TODO adaptive alpha; class compatible with sklearn and TF
 import numpy as np
 from activators import logistic
 np.random.seed(1)
