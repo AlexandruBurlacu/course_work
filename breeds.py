@@ -87,7 +87,7 @@ female_heights = concatenate(
                 sigma2(cauc_shep_female_h) * random.randn(1000) + miu(cauc_shep_female_h)]    )
 
 
-breeds = (["german shepheard" for _ in range(1000)] + 
+breeds = (["german shepherd" for _ in range(1000)] + 
           ["anatolian shepherd" for _ in range(1000)] +
           ["australian shepherd" for _ in range(1000)] +
           ["belgian shepherd" for _ in range(1000)] +
