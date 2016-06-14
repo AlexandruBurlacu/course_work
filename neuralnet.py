@@ -1,3 +1,5 @@
+# TODO SGD or minibatch-GD and adaptive alpha
+
 import numpy as np
 from activators import logistic
 np.random.seed(1)
@@ -11,7 +13,9 @@ def neuralnet(features, labels, alpha = 0.5, hidden_layer = 4, iters = 10000, sh
 	"""
 	
 	in_layer = len(features[0])
+	print(in_layer)
 	out_layer = len(labels[0])
+	print(out_layer)
 	
 	#synapses
 	synapse0 = 2 * np.random.random((in_layer, hidden_layer)) - 1
