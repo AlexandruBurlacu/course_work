@@ -28,8 +28,9 @@ def csv_write(param, data, filename = 'breeds.csv'):
 if __name__ == '__main__':
 	model = neuralnet.neuralnet_train(np.array(map(add_bias, features), dtype = np.float16),
 						np.array(labels, dtype = np.float16),
-						show_err = True, alpha = 0.5, hidden_layer = 8, iters = 100000, batch_size = 10)
+						show_err = True, alpha = 0.3, hidden_layer = 8, iters = 100000, batch_size = 30)
 	data = [0.758, 0.8041, 0.65, 0.766, 1]
+	# data = [0.8895, 0.896, 0.871, 0.88, 1]
 	prediction = preprocess.vector_to_label((map(round, neuralnet.neuralnet_predict(data, model))))
 	
 	print(prediction)
