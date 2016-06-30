@@ -12,12 +12,14 @@ def neuralnet_train(features,
 			  iters = 50000,
 			  show_err = False,
 			  activation_f = logistic,
-			  batch_size = 10):
+			  batch_size = 10, mu = 0.5):
 	"""
 		This function trains the ANN and then
 		computes the labels for given features.
 	"""
-	mu = 0.5
+	
+	# do_dropout = True
+	# dropout_percent = 0.5
 	in_layer = len(features[0])
 	out_layer = len(labels[0])
 	
@@ -34,6 +36,8 @@ def neuralnet_train(features,
 		
 		layer0 = features[sgd_index:sgd_index + batch_size]
 		layer1 = activation_f(np.dot(layer0, synapse0))
+		# if do_dropout:
+		# 	layer1 *= np.random.binomial([np.ones((len(layer0),hidden_layer))],1-dropout_percent)[0] * (1.0/(1-dropout_percent))
 		layer2 = activation_f(np.dot(layer1, synapse1))
 		
 		# Computing the errors
@@ -44,10 +48,11 @@ def neuralnet_train(features,
 		d_layer1 = l1_error * activation_f(layer1, dS = True)
 		
 		# Gradient Descent + Momentum
-		v0 = mu * v0 - alpha * layer1.T.dot(d_layer2)
-		synapse1 += v0
-		v1 = mu * v1 - alpha * layer0.T.dot(d_layer1)
-		synapse0 += v1
+		v1 = mu * v1 - alpha * layer1.T.dot(d_layer2)
+		synapse1 += v1
+		
+		v0 = mu * v0 - alpha * layer0.T.dot(d_layer1)
+		synapse0 += v0
 		
 		err = np.mean(np.abs(l2_error))
 		if show_err:
